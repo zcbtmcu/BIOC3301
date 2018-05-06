@@ -20,7 +20,7 @@ split_libraries_fastq.py \
 -b home/cbmucl13/SeqPrep_joined/seqprep_assembled.fastq_barcodes.fastq \
 -o home/cbmucl13/slout \
 -q 19 \
-\
+
 --rev_comp_barcode \
 --rev_comp_mapping_barcodes \
 
