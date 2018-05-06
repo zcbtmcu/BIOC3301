@@ -16,10 +16,10 @@ export TMPDIR=~/qiime_tmp
 #Joining Illumina sequences
 join_paired_ends.py \
 -m SeqPrep \
--b Index.fastq.gz \
--f Read1.fastq.gz \
--r Read2.fastq.gz \
--o SeqPrep_joined
+-b home/cbmucl13/Index.fastq.gz \
+-f home/cbmucl13/Read1.fastq.gz \
+-r home/cbmucl13/Read2.fastq.gz \
+-o home/cbmucl13/SeqPrep_joined
 
 # deactivating environment
 source deactivate
