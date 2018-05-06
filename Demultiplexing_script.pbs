@@ -1,0 +1,28 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p short
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# demultiplexing samples
+split_libraries_fastq.py \
+-m home/cbmucl13/map_merged_altered.txt \
+-i home/cbmucl13/SeqPrep_joined/seqprep_assembled.fastq.gz \
+-b home/cbmucl13/SeqPrep_joined/seqprep_assembled.fastq_barcodes.fastq \
+-o home/cbmucl13/slout \
+-q 19 \
+\
+--rev_comp_barcode \
+--rev_comp_mapping_barcodes \
+
+# deactivating environment
+source deactivate
