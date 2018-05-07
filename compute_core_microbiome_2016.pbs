@@ -16,6 +16,6 @@ export TMPDIR=~/qiime_tmp
 # compute core microbiome in 2016
 compute_core_microbiome.py \
 -i /home/cbmucl13/2016_02_smb/otus_closed_SILVA/otu_table.biom \
--o otu_table_core_2016
+-o /home/cbmucl13/otu_table_core_2016
 
 source deactivate

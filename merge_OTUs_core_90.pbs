@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# merge core OTU tables
+merge_otu_tables.py \
+-i /home/cbmucl13/otu_table_core_2018/core_table_90.biom,/home/cbmucl13/otu_table_core_2017/core_table_90.biom,/home/cbmucl13/otu_table_core_2016/core_table_90.biom \
+-o /home/cbmucl13/merged_core_table_90.biom
+
+source deactivate
