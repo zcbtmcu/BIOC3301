@@ -13,9 +13,10 @@ source activate qiime1
 # setting temporary directory
 export TMPDIR=~/qiime_tmp
 
-# computing core microbiome in 2018
-compute_core_microbiome.py \
--i /home/cbmucl13/otu_table_rm_sample.biom \
--o /home/cbmucl13/otu_table_core_2018
+# summarizing taxonomy of the merged core OTU table
+summarize_taxa.py \
+-i /home/cbmucl13/merged_core_table_90.biom \
+-L 2 \
+-o /home/cbmucl13/summarized_taxa_merged_core_otus_90.biom
 
 source deactivate
