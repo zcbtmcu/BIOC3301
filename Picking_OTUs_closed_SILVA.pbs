@@ -16,7 +16,7 @@ export TMPDIR=~/qiime_tmp
 # picking OTUs closed reference
 pick_closed_reference_otus.py \
 -i /home/cbmucl13/2018_02_smb/SeqPrep_joined/slout/seqs.fna \
--o ./otus_closed_SILVA \
+-o /home/cbmucl13/otus_closed_SILVA \
 -r /home/cbmucl13/SILVA_128_QIIME_release/rep_set/rep_set_16S_only/97/97_otus_16S.fasta \
 -t /home/cbmucl13/SILVA_128_QIIME_release/taxonomy/16S_only/97/majority_taxonomy_all_levels.txt \
 -a -O 24
