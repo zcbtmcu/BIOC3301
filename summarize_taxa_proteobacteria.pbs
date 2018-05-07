@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# summarising taxanomy at the class level for Proteobacteria
+summarize_taxa.py \
+-i /home/cbmucl13/split_merged_table_L2.biom/otu_table_D_0__Bacteria_D_1__Proteobacteria.biom \
+-L 3 \
+-o /home/cbmucl13/summarized_taxa_proteobacteria_L3
+
+source deactivate
