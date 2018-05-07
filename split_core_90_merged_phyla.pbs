@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# splitting merged core OTU table based on phyla
+split_otu_table_by_taxonomy.py \
+-i /home/cbmucl13/merged_core_table_90.biom \
+-L 2 \
+-o /home/cbmucl13/split_core_90_table_L2
+
+source deactivate
