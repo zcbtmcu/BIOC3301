@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# core diversity analysis of Proteobacteria phylum
+core_diversity_analyses.py \
+--recover_from_failure \
+-o /home/cbmucl13/cdout_proteobacteria \
+-i /home/cbmucl13/split_core_90_table_L2/otu_table_D_0__Bacteria_D_1__Proteobacteria.biom \
+-m /home/cbmucl13/map_merged_altered.txt \
+-t /home/cbmucl13/SILVA_128_QIIME_release/trees/97/97_otus.tre \
+-e 5501
+
+source deactivate
