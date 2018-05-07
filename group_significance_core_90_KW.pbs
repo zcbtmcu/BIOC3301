@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+module load R
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# carrying out Kruskal-Wallis test for alpha diversity
+group_significance.py \
+-i /home/cbmucl13/summarized_taxa_merged_core_otus_90.biom/merged_core_table_90_L2.biom \
+-m /home/cbmucl13/map_merged_altered.txt \
+-c Year \
+-s kruskal_wallis \
+-o /home/cbmucl13/kw_core_90_summarized.txt
+
+source deactivate
