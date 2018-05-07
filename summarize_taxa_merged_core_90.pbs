@@ -17,6 +17,6 @@ export TMPDIR=~/qiime_tmp
 summarize_taxa.py \
 -i /home/cbmucl13/merged_core_table_90.biom \
 -L 2 \
--o /home/cbmucl13/summarized_taxa_merged_core_otus_90.biom
+-o /home/cbmucl13/summarized_taxa_merged_core_otus_90
 
 source deactivate
