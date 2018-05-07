@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+module load R
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# carrying out a Kruskal-Wallis test for alpha diversity of Proteobacteria
+group_significance.py \
+-i /home/cbmucl13/summarized_taxa_proteobacteria_L3/otu_table_D_0__Bacteria_D_1__Proteobacteria_L3.biom \
+-m /home/cbmucl13/map_merged_altered.txt \
+-c Year \
+-s kruskal_wallis \
+-o /home/cbmucl13/kw_core_Proteobacteria_class.txt
+
+source deactivate
