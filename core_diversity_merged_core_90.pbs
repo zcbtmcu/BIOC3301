@@ -1,0 +1,25 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# core diversity analysis of the merged core OTU table
+core_diversity_analyses.py \
+--recover_from_failure \
+-o /home/cbmucl13/2018_02_smb/cdout_merged_core_90 \
+-i /home/cbmucl13/merged_core_table_90.biom \
+-m /home/cbmucl13/map_merged_altered.txt \
+-t /home/cbmucl13/SILVA_128_QIIME_release/trees/97/97_otus.tre \
+-e 13559
+
+source deactivate
