@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH -t 1:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# remove samples not in Gordon Square Garden
+filter_samples_from_otu_table.py \
+-i /home/cbmucl13/Scripts/otus_closed_SILVA/otu_table.biom \
+-o /home/cbmucl13/otu_table_rm_sample.biom \
+--sample_id_fp /home/cbmucl13/id.txt \
+--negate_sample_id_fp
+
+source deactivate
