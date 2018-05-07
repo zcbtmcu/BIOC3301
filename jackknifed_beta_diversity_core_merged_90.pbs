@@ -1,0 +1,24 @@
+#!/bin/bash
+#SBATCH -t 3:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# jackknifing beta diversity
+jackknifed_beta_diversity.py \
+-i /home/cbmucl13/merged_core_table_90.biom \
+-t /home/cbmucl13/SILVA_128_QIIME_release/trees/97/97_otus.tre \
+-m /home/cbmucl13/map_merged_altered.txt \
+-e 13559 \
+-o /home/cbmucl13/jackknifed_core_90
+
+source deactivate
