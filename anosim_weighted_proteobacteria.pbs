@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH -t 2:00:00
+#SBATCH -n 24
+#SBATCH -p normal
+
+# Load modules
+module load eb
+module load Miniconda2
+module load R
+
+# loading virtualenv
+source activate qiime1
+
+# setting temporary directory
+export TMPDIR=~/qiime_tmp
+
+# carrying out ANOSIM statistical test for beta diversity
+compare_categories.py \
+--method anosim \
+-i /home/cbmucl13/cdout_proteobacteria/weighted_unifrac_dm.txt \
+-m /home/cbmucl13/map_merged_altered.txt \
+-c Year \
+-o /home/cbmucl13/anosim_weighted_proteobacteria \
+-n 99
+
+source deactivate
